@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -37,4 +38,7 @@ public class Usuario {
     private String aseguradora;
 
     private LocalDate fechaNacimiento;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reserva> reservas;
 }

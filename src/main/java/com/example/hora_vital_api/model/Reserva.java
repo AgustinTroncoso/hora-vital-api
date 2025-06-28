@@ -44,4 +44,8 @@ public class Reserva {
 
     @Column(nullable = false)
     private String ubicacion;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 }
