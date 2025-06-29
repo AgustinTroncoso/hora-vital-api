@@ -1,5 +1,6 @@
 package com.example.hora_vital_api.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,6 +43,8 @@ public class Usuario {
     @Column(nullable = false)
     private LocalDate fechaNacimiento;
 
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Reserva> reservas;
 }
