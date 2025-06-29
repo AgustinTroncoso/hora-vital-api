@@ -24,7 +24,7 @@ public class Usuario {
 
     @Column(nullable = false)
     private String nombreCompleto;
-
+    @Column(nullable = false)
     private String direccion;
 
     @Column(nullable = false, unique = true)
@@ -33,10 +33,13 @@ public class Usuario {
     @Column(nullable = false)
     private String contrasena;
 
+    @Column(nullable = false)
     private String telefono;
 
+    @Column(nullable = false)
     private String aseguradora;
 
+    @Column(nullable = false)
     private LocalDate fechaNacimiento;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)

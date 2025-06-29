@@ -19,4 +19,15 @@ public class UsuarioController {
         Usuario nuevoUsuario = usuarioService.registrarUsuario(usuario);
         return ResponseEntity.ok(nuevoUsuario);
     }
+    @PostMapping("/login")
+    public ResponseEntity<Usuario> login(@RequestBody Usuario usuario) {
+        Usuario usuarioLogueado = usuarioService.login(usuario);
+        return ResponseEntity.ok(usuarioLogueado);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
+        Usuario usuario = usuarioService.obtenerUsuarioPorId(id);
+        return ResponseEntity.ok(usuario);
+    }
 }

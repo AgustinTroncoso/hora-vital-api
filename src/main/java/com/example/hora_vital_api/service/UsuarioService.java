@@ -24,4 +24,18 @@ public class UsuarioService {
 
         return usuarioRepository.save(usuario);
     }
+
+    public Usuario login(Usuario usuario) {
+        Usuario usuarioExistente = usuarioRepository.findByCorreoElectronico(usuario.getCorreoElectronico())
+                .orElseThrow(() -> new IllegalArgumentException("Correo no registrado."));
+        if (!usuarioExistente.getContrasena().equals(usuario.getContrasena())) {
+            throw new IllegalArgumentException("Contraseña incorrecta.");
+        }
+        return usuarioExistente;
+    }
+
+    public Usuario obtenerUsuarioPorId(Long id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado."));
+    }
 }
