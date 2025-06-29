@@ -13,23 +13,14 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
 
-    public Usuario registrarUsuario(Usuario usuarioInput) {
-        if (usuarioRepository.existsByCorreoElectronico(usuarioInput.getCorreoElectronico())) {
+    public Usuario registrarUsuario(Usuario usuario) {
+        if (usuarioRepository.existsByCorreoElectronico(usuario.getCorreoElectronico())) {
             throw new IllegalArgumentException("El correo electrónico ya está registrado.");
         }
-        if (usuarioRepository.existsByRut(usuarioInput.getRut())) {
+        if (usuarioRepository.existsByRut(usuario.getRut())) {
             throw new IllegalArgumentException("El RUT ya está registrado.");
         }
 
-        Usuario usuario = new Usuario();
-        usuario.setRut(usuarioInput.getRut());
-        usuario.setNombreCompleto(usuarioInput.getNombreCompleto());
-        usuario.setDireccion(usuarioInput.getDireccion());
-        usuario.setCorreoElectronico(usuarioInput.getCorreoElectronico());
-        usuario.setTelefono(usuarioInput.getTelefono());
-        usuario.setAseguradora(usuarioInput.getAseguradora());
-        usuario.setFechaNacimiento(usuarioInput.getFechaNacimiento());
-        usuario.setContrasena(usuarioInput.getContrasena());
 
         return usuarioRepository.save(usuario);
     }
